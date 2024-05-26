@@ -1,0 +1,234 @@
+---
+title: "SCI3501"
+author: "Yesahel Scicluna"
+date: "2023-01-12"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Preparing the data for analysis
+
+```{r}
+## Importing the data
+
+library(readxl)
+winequality_red_edited <- read_excel('C:/Users/yesah/Desktop/R Assignment/Raw data/winequality.red.edited.xlsx')
+View(winequality_red_edited)
+
+winequality_white_edited <- read_excel('C:/Users/yesah/Desktop/R Assignment/Raw data/winequality.white.edited.xlsx')
+View(winequality_white_edited)
+
+## Removing the variables that will not be considered
+
+winequality_red_edited$'fixed acidity'<-NULL
+winequality_red_edited$'volatile acidity'<-NULL
+winequality_red_edited$'citric acid'<-NULL
+winequality_red_edited$'residual sugar'<-NULL
+winequality_red_edited$'chlorides'<-NULL
+winequality_red_edited$'free sulfur dioxide'<-NULL
+winequality_red_edited$'total sulfur dioxide'<-NULL
+
+winequality_white_edited$'fixed acidity'<-NULL
+winequality_white_edited$'volatile acidity'<-NULL
+winequality_white_edited$'citric acid'<-NULL
+winequality_white_edited$'residual sugar'<-NULL
+winequality_white_edited$'chlorides'<-NULL
+winequality_white_edited$'free sulfur dioxide'<-NULL
+winequality_white_edited$'total sulfur dioxide'<-NULL
+
+## Creating a merged data set
+winequality_merged<-rbind(winequality_red_edited, winequality_white_edited)
+View(winequality_merged)
+
+## Reordering the columns
+winequality_merged<-winequality_merged[,c(1,3:5,2,6)]
+
+## Designating colour as a categorical variable
+
+winequality_red_edited$colour <- factor(winequality_red_edited$colour)
+levels(winequality_red_edited$colour)<-c("red", "white")
+
+winequality_white_edited$colour <- factor(winequality_white_edited$colour)
+levels(winequality_white_edited$colour)<-c("red", "white")
+
+winequality_merged$colour <- factor(winequality_merged$colour)
+levels(winequality_merged$colour)<-c("red", "white")
+
+## Converting pH into a categorical variable, 'acidity'
+acidity<-cut(winequality_merged$pH,breaks=c(-Inf, 3.5, Inf),labels=c("strongly acidic","weakly acidic"),right=FALSE)
+winequality_merged<-cbind(winequality_merged, acidity)
+winequality_red_edited$'pH'<-NULL
+winequality_white_edited$'pH'<-NULL
+winequality_merged$'pH'<-NULL
+```
+
+# Exploratory analysis related to question 1
+
+```{r}
+## Checking the means and standard deviations of the scores for red and white wines
+
+summary(winequality_red_edited$quality)
+sd(winequality_red_edited$quality)
+
+summary(winequality_white_edited$quality)
+sd(winequality_white_edited$quality)
+```
+
+```{r}
+## Checking the distribution of scores for red and white wines
+
+frequency_redwine_quality <- table(winequality_red_edited$quality)
+redwine_barchart<-barplot(frequency_redwine_quality, main="Red Wine", xlab="Quality", ylab="Frequency",
+names.arg=levels(winequality_red_edited$quality))
+
+frequency_whitewine_quality <- table(winequality_white_edited$quality)
+whitewine_barchart<-barplot(frequency_whitewine_quality, main="White Wine", xlab="Quality", ylab="Frequency", 
+names.arg=levels(winequality_white_edited$quality))
+```
+
+```{r}
+## Comparing the average scores of red and white wines
+library(ggplot2)
+score_boxplot <- ggplot(winequality_merged, aes(x=colour, y=quality, na.rm = TRUE)) + geom_boxplot(na.rm = TRUE)
+score_boxplot
+```
+
+# Exploratory analysis related to question 2
+
+```{r}
+## Checking for any potential relationships between the different quantitative variables
+pairs(winequality_merged[1:4])
+```
+
+# Exploratory analysis related to question 3 
+
+```{r}
+## Checking the frequency of stronger/weaker wines and red/white wines
+summary(winequality_merged$acidity)
+summary(winequality_merged$colour)
+```
+
+```{r}
+## Expressing the above frequencies as percentages
+
+slices<-summary(winequality_merged$acidity)
+lbls<-levels(winequality_merged$acidity)
+prcnt<-round(slices/sum(slices)*100)
+lbls<-paste(lbls, prcnt)
+lbls <- paste(lbls,"%",sep="")
+pie(slices, labels=lbls)
+
+slices2<-summary(winequality_merged$colour)
+lbls2<-levels(winequality_merged$colour)
+prcnt2<-round(slices2/sum(slices2)*100)
+lbls2<-paste(lbls2, prcnt2)
+lbls2<- paste(lbls2,"%",sep="")
+pie(slices2, labels=lbls2)
+```
+
+# Data analysis related to question 1
+
+```{r}
+## Testing if the red and white wine scores are normally distributed
+by(winequality_merged$quality, winequality_merged$colour, shapiro.test)
+```
+
+```{r}
+## Testing whether the red and white wines are equal in variance
+library(lawstat)
+levene.test(winequality_merged$quality,winequality_merged$colour,location='mean')
+```
+
+```{r}
+## Testing if the average red and white wine scores are different
+wilcox.test(quality ~ colour, data=winequality_merged, exact=FALSE)
+```
+
+# Data analysis related to question 2
+
+```{r}
+## Testing if density, alcohol, sulfates and score exhibit multivariate normal distribution
+library(energy)
+mvnorm.etest(winequality_merged[,1:4],R=200)
+```
+
+```{r}
+## Testing for correlations between density, alcohol, sulfates and score
+library(Hmisc)
+corr_data<-as.matrix(winequality_merged[c(1:4)])
+rcorr(corr_data, type="spearman")
+```
+
+```{r}
+## Fitting a multiple linear regression model
+y<-winequality_merged[,4]
+x<-winequality_merged[,2:3]
+mlrmodel<-lm(y~.,x)
+summary(mlrmodel)
+```
+
+```{r}
+## Testing if the residuals exhibit normal distribution
+library(MASS)
+mlrresiduals<-studres(mlrmodel) 
+library(nortest)
+ad.test(mlrresiduals)
+```
+
+```{r}
+## Testing if the residuals are independent of each other
+library(lmtest)
+dwtest(mlrmodel)
+```
+
+```{r}
+## Visualising the homoscedasticity of the residuals
+plot(predict(mlrmodel),residuals(mlrmodel))
+```
+
+```{r}
+## Testing the homoscedasticity of the residuals
+library(lmtest)
+bptest(mlrmodel)
+```
+
+```{r}
+# Checking for outliers using Mahalanobis distances
+m_dist<-mahalanobis(x, colMeans(x), cov(x))
+cutof_mah<-qchisq(0.95, 2, lower.tail = TRUE, log.p = FALSE)
+cutof_mah
+out_mah<-which(m_dist>cutof_mah)
+out_mah
+length(out_mah)
+```
+
+```{r}
+## Checking for outliers using Leverages
+cutof_lev<-2*3/(length(y))
+cutof_lev
+leverages<-as.data.frame(hatvalues(mlrmodel, type='rstandard'))
+out_lev<-which(leverages>cutof_lev)
+out_lev
+length(out_lev)
+```
+
+```{r}
+# Checking for outliers using Cook's distances
+cook<-cooks.distance(mlrmodel, type='rstandard')
+which(cook>=1)
+```
+
+# Data analysis related to question 3
+
+```{r}
+## Running a chi-squared test on the acidity and colour variables
+X2_data<-matrix(c(6159,338,1599,4898),nrow=2,byrow=TRUE)
+colnames(X2_data) <- c("strongly acidic","weakly acidic")
+rownames(X2_data) <- c("red","white")
+chisq.test(X2_data,correct=FALSE)
+```
