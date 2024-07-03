@@ -1,9 +1,8 @@
 '''
 lucky.py: uses a search term supplied to the command-line in order to open several of the top Google search results
 
-Author: Al Sweigart
-- Editor: Yesahel Scicluna (selector in line 22)
-    - Justification: The '.r a' selector originally suggested by Al Sweigart is no longer functional
+Authors: Al Sweigart (base code), Yesahel Scicluna (selector in line 22, comments)
+- Note: The '.r a' selector originally suggested by Al Sweigart is no longer functional
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 11. Project - "I'm Feeling Lucky" Google Search
 '''
