@@ -1,7 +1,7 @@
 '''
 clip.py: uses shelve files to extend the functionality of the clipboard from the command line; can be used as a secure password manager
 
-Authors: Al Sweigart, Yesahel Scicluna
+Authors: Al Sweigart (base code), Yesahel Scicluna (function expansion)
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 8. Practice Project - Extending the Multiclipboard
 - Task Description: see clip.md
