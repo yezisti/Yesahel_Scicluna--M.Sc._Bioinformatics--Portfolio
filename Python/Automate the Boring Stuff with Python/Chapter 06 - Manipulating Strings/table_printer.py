@@ -4,7 +4,7 @@ table_printer.py: tabulates the contents of a list obj. and adds padding to the 
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 6. Practice Project - Table Printer
-- Task Description: see table_printer.md
+- Task Description: see README.md
 '''
 
 def print_table(table_data):

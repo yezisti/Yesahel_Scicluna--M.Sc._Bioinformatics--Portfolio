@@ -4,7 +4,7 @@ close_name_gaps.py: goes through files in a specified folder and closes any gaps
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 9. Practice Project - Filling in the Gaps
-- Task Description: see close_name_gaps.md
+- Task Description: see README.md
 '''
 
 def close_gaps(folder, prefix, file_ext, places):

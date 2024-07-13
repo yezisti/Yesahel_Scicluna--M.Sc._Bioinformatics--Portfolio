@@ -4,7 +4,7 @@ assemble.py - assembles overlapping fragments of strings
 Author: Yesahel Scicluna (assisted by ChatGPT)
 
 Source: Arthur M. Lesk, Introduction to Bioinformatics. Chapter 1. Problem 1.5
-- Task Description: see assemble.md
+- Task Description: see README.md
 
 Required Files: fragments.txt
 '''

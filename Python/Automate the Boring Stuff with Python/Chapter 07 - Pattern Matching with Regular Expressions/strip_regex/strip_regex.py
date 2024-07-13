@@ -4,7 +4,7 @@ strip_regex.py: defines a function that works like the `strip()` method
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 7. Practice Project - Regex Version of strip()
-- Task Description: see strip_regex.md
+- Task Description: see README.md
 '''
 
 import re

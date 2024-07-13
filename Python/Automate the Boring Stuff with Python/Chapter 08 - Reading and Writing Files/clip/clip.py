@@ -4,7 +4,7 @@ clip.py: uses shelve files to extend the functionality of the clipboard from the
 Authors: Al Sweigart (base code), Yesahel Scicluna (function expansion)
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 8. Practice Project - Extending the Multiclipboard
-- Task Description: see clip.md
+- Task Description: see README.md
 '''
 
 user_guide = '''

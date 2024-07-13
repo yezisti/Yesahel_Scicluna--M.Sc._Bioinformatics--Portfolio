@@ -4,7 +4,7 @@ download_imgur.py: searches and downloads images from Imgur
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 11. Practice Project - Image Site Downloader
-- Task Description: see download_imgur.md
+- Task Description: see README.md
 '''
 
 import sys, requests, os, bs4

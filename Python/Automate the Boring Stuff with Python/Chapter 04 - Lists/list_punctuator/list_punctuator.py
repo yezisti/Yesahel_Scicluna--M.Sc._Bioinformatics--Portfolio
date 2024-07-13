@@ -4,7 +4,7 @@ list_punctuator.py: Punctuates a list of inputted items with commas, conjuctions
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 4. Practice Project - Comma Code
-- Task Description: see list_punctuator.md
+- Task Description: see README.md
 '''
 
 def punctuate(anylist):

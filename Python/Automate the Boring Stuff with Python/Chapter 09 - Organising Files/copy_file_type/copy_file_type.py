@@ -4,7 +4,7 @@ copy_file_type.py: finds and makes copies of files of a specified file extension
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 9. Practice Project - Selective Copy
-- Task Description: see copy_file_type.md
+- Task Description: see README.md
 '''
 
 def copy_file_type(folder, file_ext):

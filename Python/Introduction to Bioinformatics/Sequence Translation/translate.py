@@ -4,7 +4,7 @@ translate.py - translates DNA/RA sequences using the standard genetic code
 Author: Yesahel Scicluna (assisted by ChatGPT)
 
 Source: Arthur M. Lesk, Introduction to Bioinformatics. Chapter 1. Problems 1.1, 1.4
-- Task Description: see translate.md
+- Task Description: see README.md
 '''
 
 def translate(sequence):

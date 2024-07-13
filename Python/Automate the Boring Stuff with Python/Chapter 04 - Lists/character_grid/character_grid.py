@@ -4,7 +4,7 @@ character_grid.py: prints a grid denoted by a list of lists of string characters
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 4. Practice Project - Character Picture Grid
-- Task Description: see character_grid.md
+- Task Description: see README.md
 '''
 
 def print_grid(grid_list):

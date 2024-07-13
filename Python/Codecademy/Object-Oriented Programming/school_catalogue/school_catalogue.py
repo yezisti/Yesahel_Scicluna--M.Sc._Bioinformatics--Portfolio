@@ -6,7 +6,7 @@ Author: Yesahel Scicluna
 
 Source: Codecademy. Intermediate Python 3: Object-Oriented Programming. Practice Project - School Catalogue
 
-Task Description: see school_catalogue.md
+Task Description: see README.md
 '''
 
 # Defines superclass School

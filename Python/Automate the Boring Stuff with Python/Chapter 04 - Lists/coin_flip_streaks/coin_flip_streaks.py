@@ -4,7 +4,7 @@ coin_flip_streaks.py: calculates the probability of 100 coin tosses producing at
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 4. Practice Project - Coin Flip Streaks
-- Task Description: see coin_flip_streaks.md
+- Task Description: see README.md
 '''
 
 import random

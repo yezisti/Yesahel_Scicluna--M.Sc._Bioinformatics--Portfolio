@@ -4,7 +4,7 @@ find_large_files.py: Searches the entirety of a specified folder for files large
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 9. Practice Project - Deleting Unneeded Files
-- Task Description: see find_large_files.md
+- Task Description: see README.md
 '''
 
 def find_large_files(folder, size_in_MB):

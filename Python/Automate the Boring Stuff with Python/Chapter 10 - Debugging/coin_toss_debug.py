@@ -5,7 +5,7 @@ Authors: Yesahel Scicluna, Al Sweigart
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 10. Practice Project - Debugging Coin Toss
 
-Task Description: see coin_toss_debug.md
+Task Description: see README.md
 '''
 
 # Original code:

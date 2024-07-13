@@ -4,7 +4,7 @@ collatz.py: performs the Collatz sequence of operations on a number input
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 3. Practice Projects - The Collatz Sequence, Input Validation
-- Task Description: see collatz.md
+- Task Description: see README.md
 '''
 
 def collatz(number):

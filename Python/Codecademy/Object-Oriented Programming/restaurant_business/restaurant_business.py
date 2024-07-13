@@ -6,7 +6,7 @@ Author: Yesahel Scicluna
 
 Source: Codecademy. Python 3. Practice Project - Basta Fazoolin'
 
-Task Description: see restaurant_business.md
+Task Description: see README.md
 '''
 
 import datetime as dt

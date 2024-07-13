@@ -4,7 +4,7 @@ password_strength_check.py: uses a set of regular expressions in order to test t
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 7. Practice Project - Strong Password Detection
-- Task Description: see password_strength_check.md
+- Task Description: see README.md
 '''
 
 def check_strength(password):

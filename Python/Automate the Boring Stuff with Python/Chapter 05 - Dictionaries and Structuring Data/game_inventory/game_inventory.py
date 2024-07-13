@@ -5,7 +5,7 @@ Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 5. Practice Projects - Fantasy Game Inventory,
                                                                                            List to Dictionary Function for Fantasy Game Inventory
-- Task Description: see game_inventory.md
+- Task Description: see README.md
 '''
 
 # Displays inventory contents

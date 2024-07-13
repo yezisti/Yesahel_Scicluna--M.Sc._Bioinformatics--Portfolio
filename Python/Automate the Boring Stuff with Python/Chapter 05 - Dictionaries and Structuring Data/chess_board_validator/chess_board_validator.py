@@ -4,7 +4,7 @@ chess_board_validator.py: defines two functions that look into the validity of d
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 5. Practice Project - Chess Dictionary Validator
-- Task Description: see chess_board_validator.md
+- Task Description: see README.md
 '''
 
 def check_board(chess_board_dict):

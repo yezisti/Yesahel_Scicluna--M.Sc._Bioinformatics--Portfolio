@@ -4,7 +4,7 @@ mad_libs.py: reads text files, replacing a set of placeholder text with user-sup
 Author: Yesahel Scicluna
 
 Source: Al Sweigart, Automate the Boring Stuff with Python. Chapter 8. Practice Project - Mad Libs
-- Task Description: see mad_libs.md
+- Task Description: see README.md
 
 Required Files: madlibs_1.txt, ..., madlibs_5.txt
 '''
